@@ -28,7 +28,12 @@ public class BarCodeListAdapter extends RecyclerView.Adapter<BarCodeListAdapter.
     @Override
     public void onBindViewHolder(@NonNull BarCodeListAdapter.BarCodeViewHolder holder, int position) {
         String barcode = barcodeList.get(position);
-        holder.bind(barcode);
+
+        String[] parts = barcode.split(" - ");
+        String link = parts[0];
+        String date= parts[1];
+
+        holder.bind(link,date);
     }
 
     @Override
@@ -37,13 +42,17 @@ public class BarCodeListAdapter extends RecyclerView.Adapter<BarCodeListAdapter.
     }
 
     public static class BarCodeViewHolder extends RecyclerView.ViewHolder{
-        private TextView textView;
+        private TextView linkTxt;
+        private TextView dateTimeTxt;
         public BarCodeViewHolder(@NonNull View itemview){
             super(itemview);
-            textView = itemview.findViewById(R.id.text_view_barcode);
+
+            linkTxt = itemview.findViewById(R.id.text_view_barcode);
+            dateTimeTxt= itemview.findViewById(R.id.date_txt);
         }
-        public void bind(String barcode){
-            textView.setText(barcode);
+        public void bind(String barcode, String dateTime){
+            linkTxt.setText(barcode);
+            dateTimeTxt.setText(dateTime);
         }
     }
 }

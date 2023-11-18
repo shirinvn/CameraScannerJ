@@ -60,7 +60,7 @@ public class ScannerActivity extends AppCompatActivity {
                     String scannedData = result.getText();
 
                     String dateTime = getCurrentDateTime();
-                    String linkWithDateTime = scannedData + "- Date/Time: " + dateTime;
+                    String linkWithDateTime = scannedData + " - " + dateTime;
                     new AlertDialog.Builder(ScannerActivity.this)
 
                             .setTitle("توجه")

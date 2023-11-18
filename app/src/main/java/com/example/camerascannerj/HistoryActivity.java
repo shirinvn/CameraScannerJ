@@ -36,14 +36,22 @@ public class HistoryActivity extends AppCompatActivity {
             Log.e("Scanned Barcode", "is empty");
 
         }
-        Intent intent= getIntent();
-        String scannedBarCode = intent.getStringExtra("scannedBarCode");
-        if (scannedBarCode != null){
+//        Intent intent= getIntent();
+//        String scannedBarCode = intent.getStringExtra("scannedBarCode");
+//        if (scannedBarCode != null){
+//            String[] parts = scannedBarCode.split(" - ");
+//            String link = parts[0];
+//            String dateTime = parts[1];
+//
+//            TextView linkTextView = findViewById(R.id.text_view_barcode);
+//            TextView dateTimeTextView= findViewById(R.id.date_txt);
+//            linkTextView.setText(link);
+//            dateTimeTextView.setText(dateTime);
 
-            ArrayList<String> scannedData= new ArrayList<>();
-            scannedData.add(scannedBarCode);
-            BarCodeListAdapter adapter= new BarCodeListAdapter(scannedData);
-            recyclerView.setAdapter(adapter);
+//            ArrayList<String> scannedData= new ArrayList<>();
+//            scannedData.add(scannedBarCode);
+//            BarCodeListAdapter adapter= new BarCodeListAdapter(scannedData);
+//            recyclerView.setAdapter(adapter);
         }
 
    //     showPersianScanDateTime();
@@ -63,4 +71,4 @@ public class HistoryActivity extends AppCompatActivity {
 
 
  //   }
-}
+//}

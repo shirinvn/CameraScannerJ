@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void  init(){
         cardView=findViewById(R.id.cardview);
         openCamera= findViewById(R.id.open_camera);
+
         history= findViewById(R.id.history);
         instructiontext=findViewById(R.id.instructiontext);
         detaillinktext=findViewById(R.id.detail_linktext);

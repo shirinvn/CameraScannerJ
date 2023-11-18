@@ -12,11 +12,19 @@
         android:scaleType="centerInside"/>
 
     <TextView
+        android:background="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_view_barcode"
         android:textSize="18sp"
         android:padding="8dp"/>
+
+    <TextView
+        android:background="#FF1212"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/date_txt"
+        android:textSize="18sp"/>
 
 
 </LinearLayout>
