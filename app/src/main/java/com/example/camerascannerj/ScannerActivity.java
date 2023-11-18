@@ -13,8 +13,12 @@ import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.google.zxing.Result;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ScannerActivity extends AppCompatActivity {
 
+    private List<String> scannedBarcodes= new ArrayList<>();
     CodeScanner codeScanner;
     CodeScannerView codeScannerView;
     public static final String RESULT_KEY="resultKey";
@@ -80,4 +84,14 @@ public class ScannerActivity extends AppCompatActivity {
 
         }
     };
+
+
+    private void addScannedBarcode(String barcode){
+        scannedBarcodes.add(barcode);
+    }
+
+    private void startNewActivityWithScannedBarCodes(){
+        Intent intent = new Intent(this, HistoryActivity.class);
+        startActivity(intent);
+    }
 }

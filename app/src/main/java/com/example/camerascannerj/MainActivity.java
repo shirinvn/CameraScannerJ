@@ -14,10 +14,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     CardView cardView;
-    Button openCamera;
+
+    private ArrayList<String> scannedBarCodesList= new ArrayList<>();
+    Button openCamera, history;
     TextView instructiontext,detaillinktext;
     public static final int PERMISSION_CODE=100;
     public static final int AC_PERMISSION_CODE=200;
@@ -34,9 +38,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void  init(){
         cardView=findViewById(R.id.cardview);
         openCamera= findViewById(R.id.open_camera);
+        history= findViewById(R.id.history);
         instructiontext=findViewById(R.id.instructiontext);
         detaillinktext=findViewById(R.id.detail_linktext);
         openCamera.setOnClickListener(this);
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startNewActivityWithScannerBarcodes();
+            }
+        });
     }
 
     @Override
@@ -88,7 +99,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             instructiontext.setVisibility(View.VISIBLE);
             assert data != null;
             detaillinktext.setText(data.getStringExtra(ScannerActivity.RESULT_KEY));
+            if (data != null
+            ){
+                String scannedBarcode= data.getStringExtra(ScannerActivity.RESULT_KEY);
+                scannedBarCodesList.add(scannedBarcode);
+
+            }
         }
+    }
+
+    private void startNewActivityWithScannerBarcodes(){
+        Intent intent= new Intent(this, HistoryActivity.class);
+        intent.putStringArrayListExtra("scannedBarcodesList", scannedBarCodesList);
+        startActivity(intent);
     }
 
 

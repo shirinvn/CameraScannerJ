@@ -1,0 +1,49 @@
+package com.example.camerascannerj;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
+public class BarCodeListAdapter extends RecyclerView.Adapter<BarCodeListAdapter.BarCodeViewHolder> {
+
+    private ArrayList<String> barcodeList;
+
+    public BarCodeListAdapter(ArrayList<String> barcodeList){
+        this.barcodeList= barcodeList;
+    }
+
+    @NonNull
+    @Override
+    public BarCodeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_barcode, parent, false);
+        return new BarCodeViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull BarCodeListAdapter.BarCodeViewHolder holder, int position) {
+        String barcode = barcodeList.get(position);
+        holder.bind(barcode);
+    }
+
+    @Override
+    public int getItemCount() {
+        return barcodeList.size();
+    }
+
+    public static class BarCodeViewHolder extends RecyclerView.ViewHolder{
+        private TextView textView;
+        public BarCodeViewHolder(@NonNull View itemview){
+            super(itemview);
+            textView = itemview.findViewById(R.id.text_view_barcode);
+        }
+        public void bind(String barcode){
+            textView.setText(barcode);
+        }
+    }
+}
