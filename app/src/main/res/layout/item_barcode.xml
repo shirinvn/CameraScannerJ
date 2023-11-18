@@ -2,7 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/image_barcode"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerInside"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -10,5 +17,6 @@
         android:id="@+id/text_view_barcode"
         android:textSize="18sp"
         android:padding="8dp"/>
+
 
 </LinearLayout>

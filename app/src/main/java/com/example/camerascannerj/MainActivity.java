@@ -10,6 +10,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,11 +21,13 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     CardView cardView;
 
+
     private ArrayList<String> scannedBarCodesList= new ArrayList<>();
     Button openCamera, history;
     TextView instructiontext,detaillinktext;
     public static final int PERMISSION_CODE=100;
     public static final int AC_PERMISSION_CODE=200;
+    public static final int  REQUESR_CODE_SECOND_ACTIVITY=300;
 
     String[] permission= new String[]{Manifest.permission.CAMERA};
     @Override
@@ -104,6 +107,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String scannedBarcode= data.getStringExtra(ScannerActivity.RESULT_KEY);
                 scannedBarCodesList.add(scannedBarcode);
 
+                Intent historyActivityIntent = new Intent(this, HistoryActivity.class);
+                historyActivityIntent.putExtra("scannedBarcode", scannedBarcode);
+                startActivityForResult(historyActivityIntent, REQUESR_CODE_SECOND_ACTIVITY);
+
+            }
+            else if (requestCode == REQUESR_CODE_SECOND_ACTIVITY && resultCode== RESULT_OK){
+                if (data != null){
+                    String resultFromHistoryActivity = data.getStringExtra("resultFromHistoryActivity");
+                    Log.e("Result0", resultFromHistoryActivity);
+                }
             }
         }
     }

@@ -13,8 +13,11 @@ import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.google.zxing.Result;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ScannerActivity extends AppCompatActivity {
 
@@ -54,6 +57,10 @@ public class ScannerActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
+                    String scannedData = result.getText();
+
+                    String dateTime = getCurrentDateTime();
+                    String linkWithDateTime = scannedData + "- Date/Time: " + dateTime;
                     new AlertDialog.Builder(ScannerActivity.this)
 
                             .setTitle("توجه")
@@ -79,12 +86,25 @@ public class ScannerActivity extends AppCompatActivity {
                             })
                             .show();
 
+                    returnResultToPreviousActivity(linkWithDateTime);
                 }
             });
 
         }
     };
 
+
+    private void returnResultToPreviousActivity(String result){
+        Intent intent = new Intent();
+        intent.putExtra(RESULT_KEY,result);
+        setResult(RESULT_OK,intent);
+        finish();
+    }
+
+    private String getCurrentDateTime(){
+        SimpleDateFormat simpleDateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        return simpleDateFormat.format(new Date());
+    }
 
     private void addScannedBarcode(String barcode){
         scannedBarcodes.add(barcode);

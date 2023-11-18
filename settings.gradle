@@ -5,10 +5,13 @@ pluginManagement {
         gradlePluginPortal()
         maven {
             url "https://repo.spring.io/release"
+
         }
         maven {
             url "https://repository.jboss.org/maven2"
         }
+        maven { url 'https://jitpack.io' }
+
     }
 }
 dependencyResolutionManagement {
