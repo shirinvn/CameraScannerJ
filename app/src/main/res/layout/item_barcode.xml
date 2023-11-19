@@ -16,6 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_view_barcode"
+        android:autoLink="all"
         android:textSize="18sp"
         android:padding="8dp"/>
 
