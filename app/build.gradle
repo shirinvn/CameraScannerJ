@@ -45,9 +45,19 @@ dependencies {
 
     implementation'com.github.yuriy-budiyev:code-scanner:2.3.2'
 
+<<<<<<< HEAD
     implementation 'com.google.code.gson:gson:2.9.0'
 
         implementation 'com.github.samanzamani:PersianDate:1.7.1'
 
+=======
+    //implementation'com.github.samanzamani.persiancalendar:JalaliCalendar:1.2'
+
+   
+        implementation 'com.github.samanzamani:PersianDate:1.7.1'
+
+      //  implementation 'com.github.samanzamani:PersianDate:1.7.1'
+
+>>>>>>> a0834d422503c41039d475e056fcba055534e53b
 
 }
