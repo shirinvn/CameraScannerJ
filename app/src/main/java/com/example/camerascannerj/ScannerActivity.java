@@ -3,6 +3,7 @@ package com.example.camerascannerj;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,6 +28,7 @@ public class ScannerActivity extends AppCompatActivity {
     private List<String> scannedBarcodes= new ArrayList<>();
     CodeScanner codeScanner;
     CodeScannerView codeScannerView;
+    HistoryActivity historyActivity;
     public static final String RESULT_KEY="resultKey";
 
     @Override
@@ -97,24 +99,7 @@ public class ScannerActivity extends AppCompatActivity {
     };
 
 
-/*
-    private void returnResultToPreviousActivity(String result){
-        Intent intent = new Intent();
-        intent.putExtra(RESULT_KEY,result);
-        setResult(RESULT_OK,intent);
-        finish();
-
-
-            // اضافه کردن اطلاعات به SharedPreferences
-            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            Set<String> scannedBarcodesSet = sharedPreferences.getStringSet("scannedBarcodes", new HashSet<>());
-            scannedBarcodesSet.add(result);
-            editor.putStringSet("scannedBarcodes", scannedBarcodesSet);
-            editor.apply();
-        }
-*/
-
+    @SuppressLint("MutatingSharedPrefs")
     private void returnResultToPreviousActivity(String result) {
         // اضافه کردن اطلاعات به SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -123,7 +108,11 @@ public class ScannerActivity extends AppCompatActivity {
         scannedBarcodesSet.add(result);
         editor.putStringSet("scannedBarcodes", scannedBarcodesSet);
         editor.apply();
+
     }
+
+
+
 
 
 
@@ -132,12 +121,5 @@ public class ScannerActivity extends AppCompatActivity {
         return simpleDateFormat.format(new Date());
     }
 
-    private void addScannedBarcode(String barcode){
-        scannedBarcodes.add(barcode);
-    }
 
-    private void startNewActivityWithScannedBarCodes(){
-        Intent intent = new Intent(this, HistoryActivity.class);
-        startActivity(intent);
-    }
 }
