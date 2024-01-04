@@ -62,6 +62,8 @@ public class HistoryActivity extends AppCompatActivity {
     private void saveScannedBarcodes() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
+
         Set<String> scannedBarcodesSet = new HashSet<>(scannedBarcodesList);
         editor.putStringSet("scannedBarcodes", scannedBarcodesSet);
         editor.apply();
