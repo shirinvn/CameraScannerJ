@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">اسکنر من</string>
+    <string name="open_camer">باز کردن دوربین</string>
+    <string name="history">حافظه</string>
+    <string name="instructionText">برای جزییات بیشتر کلیک کنید</string>
+    <string name="todo">TODO</string>
+
+
+</resources>
