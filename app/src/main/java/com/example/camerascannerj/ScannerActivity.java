@@ -3,17 +3,14 @@ package com.example.camerascannerj;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-<<<<<<< HEAD
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-=======
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
->>>>>>> a0834d422503c41039d475e056fcba055534e53b
 import android.os.Bundle;
 
 import com.budiyev.android.codescanner.CodeScanner;
@@ -24,25 +21,19 @@ import com.google.zxing.Result;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-<<<<<<< HEAD
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-=======
 import java.util.List;
 import java.util.Locale;
->>>>>>> a0834d422503c41039d475e056fcba055534e53b
 
 public class ScannerActivity extends AppCompatActivity {
 
     private List<String> scannedBarcodes= new ArrayList<>();
     CodeScanner codeScanner;
     CodeScannerView codeScannerView;
-<<<<<<< HEAD
     HistoryActivity historyActivity;
-=======
->>>>>>> a0834d422503c41039d475e056fcba055534e53b
     public static final String RESULT_KEY="resultKey";
 
     @Override
@@ -113,7 +104,6 @@ public class ScannerActivity extends AppCompatActivity {
     };
 
 
-<<<<<<< HEAD
     @SuppressLint("MutatingSharedPrefs")
     private void returnResultToPreviousActivity(String result) {
         // اضافه کردن اطلاعات به SharedPreferences
@@ -127,34 +117,9 @@ public class ScannerActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-=======
-    private void returnResultToPreviousActivity(String result){
-        Intent intent = new Intent();
-        intent.putExtra(RESULT_KEY,result);
-        setResult(RESULT_OK,intent);
-        finish();
-    }
-
->>>>>>> a0834d422503c41039d475e056fcba055534e53b
     private String getCurrentDateTime(){
         SimpleDateFormat simpleDateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         return simpleDateFormat.format(new Date());
     }
 
-<<<<<<< HEAD
-
-=======
-    private void addScannedBarcode(String barcode){
-        scannedBarcodes.add(barcode);
-    }
-
-    private void startNewActivityWithScannedBarCodes(){
-        Intent intent = new Intent(this, HistoryActivity.class);
-        startActivity(intent);
-    }
->>>>>>> a0834d422503c41039d475e056fcba055534e53b
 }

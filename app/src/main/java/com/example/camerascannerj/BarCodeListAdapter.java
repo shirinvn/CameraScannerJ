@@ -12,11 +12,7 @@ import java.util.ArrayList;
 
 public class BarCodeListAdapter extends RecyclerView.Adapter<BarCodeListAdapter.BarCodeViewHolder> {
 
-<<<<<<< HEAD
     private final ArrayList<String> barcodeList;
-=======
-    private ArrayList<String> barcodeList;
->>>>>>> a0834d422503c41039d475e056fcba055534e53b
 
     public BarCodeListAdapter(ArrayList<String> barcodeList){
         this.barcodeList= barcodeList;

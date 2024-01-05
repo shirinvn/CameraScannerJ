@@ -34,7 +34,7 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        loadScannedBarcodes();
+       loadScannedBarcodes();
         setupRecyclerView();
     }
 
@@ -50,20 +50,22 @@ public class HistoryActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Set<String> scannedBarcodesSet1 = new HashSet<>(scannedBarcodesList);
+        editor.putStringSet("scannedBarcodes", scannedBarcodesSet1);
+        editor.apply();
+
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     private void loadScannedBarcodes() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         Set<String> scannedBarcodesSet = sharedPreferences.getStringSet("scannedBarcodes", new HashSet<>());
         scannedBarcodesList = new ArrayList<>(scannedBarcodesSet);
-
-
-
-    //    sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-/*        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Set<String> scannedBarcodesSet1 = new HashSet<>(scannedBarcodesList);
-        editor.putStringSet("scannedBarcodes", scannedBarcodesSet1);
-        editor.apply();*/
 
 
     }
